@@ -16,11 +16,6 @@ namespace OptionsTest
 
             var Services = builder.Services!;
 
-            //bin下面的文件
-            //var bulider = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-            // Add services to the container.
-
             Services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);

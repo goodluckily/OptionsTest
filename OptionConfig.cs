@@ -11,8 +11,11 @@ namespace OptionsTest
     {
         public static IServiceCollection AddJsonPrivideOptions<T>(this IServiceCollection Services,string ConfigKey) where T : class
         {
-            var configBulider = new ConfigurationBuilder().AddJsonFile(Path.Combine(Environment.CurrentDirectory, "appsettings.json"), optional: true, reloadOnChange: true);
+            //bin下面的文件
+            //var bulider = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
+            //指定该项目下的文件 Environment.CurrentDirectory
+            var configBulider = new ConfigurationBuilder().AddJsonFile(Path.Combine(Environment.CurrentDirectory, "appsettings.json"), optional: true, reloadOnChange: true);
             var configuration = configBulider.Build();
             Services.AddOptions();
             Services.Configure<T>(configuration.GetSection(ConfigKey));
